@@ -1,6 +1,11 @@
 const discord = require("discord.js");
 
-const embed = new Discord.RichEmbed()
+
+
+
+module.exports.run = async (bot, message, args) => {
+
+    const embed = new discord.RichEmbed()
     .setTitle("This is your title, it can hold 256 characters")
     .setAuthor("Author Name", "https://i.imgur.com/lm8s41J.png")
     /*
@@ -27,13 +32,9 @@ const embed = new Discord.RichEmbed()
      */
     .addBlankField(true)
     .addField("Inline Field 3", "You can have a maximum of 25 fields.", true);
-
-
-module.exports.run = async (bot, message, args) => {
-
-
-    message.channel.send({embed});
-
+   
+    return message.channel.send({embed});
+    
 }
 
 
