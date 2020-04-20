@@ -2,15 +2,29 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    return message.channel.send(`YOUR INFO:\n
-                                Your Username: ${message.author.username}\n
-                                Your ID: ${message.author.id}\n
-                                \n
-                                SERVER INFO:\n
-                                Server Name: ${message.guild.name}\n
-                                Total Members: ${message.guild.memberCount} 
-                                `);
+// inside a command, event listener, etc.
+const exampleEmbed = new Discord.MessageEmbed()
+	.setColor('#0099ff')
+	.setTitle('Some title')
+	.setURL('https://discord.js.org/')
+	.setAuthor('Some name', 'https://i.imgur.com/wSTFkRM.png', 'https://discord.js.org')
+	.setDescription('Some description here')
+	.setThumbnail('https://i.imgur.com/wSTFkRM.png')
+	.addFields(
+		{ name: 'Regular field title', value: 'Some value here' },
+		{ name: '\u200B', value: '\u200B' },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
+		{ name: 'Inline field title', value: 'Some value here', inline: true },
+	)
+	.addField('Inline field title', 'Some value here', true)
+	.setImage('https://i.imgur.com/wSTFkRM.png')
+	.setTimestamp()
+	.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
+
+return message.channel.send(exampleEmbed);
+
 }
+
 
 module.exports.help = {
     name: "about"
