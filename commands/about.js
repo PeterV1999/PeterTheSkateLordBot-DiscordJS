@@ -21,7 +21,7 @@ const exampleEmbed = new Discord.MessageEmbed()
 	.setTimestamp()
 	.setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
 
-return message.channel.send(exampleEmbed);
+return channel.send(exampleEmbed);
 
 }
 
