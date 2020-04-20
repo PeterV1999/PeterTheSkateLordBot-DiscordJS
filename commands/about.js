@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-const embed = new discord.RichEmbed()
+const embed = new RichEmbed()
     .setTitle("This is your title, it can hold 256 characters")
     .setAuthor("Author Name", "https://i.imgur.com/lm8s41J.png")
     /*
