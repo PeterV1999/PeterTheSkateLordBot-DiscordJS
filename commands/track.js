@@ -10,8 +10,6 @@ module.exports = async (client,message,oldMember,newMember) => {
     if(oldUserChannel === undefined && newUserChannel !== undefined) {
         return message.channel.send(`PONG! (DONT ABUSE THIS COMMAND ${message.author.username})`);
 
-
-
     } else if(newUserChannel === undefined){
 
       // User leaves a voice channel
