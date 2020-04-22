@@ -41,16 +41,15 @@ bot.on("message", async message => {
     if(commandfile) commandfile.run(bot, message, args);
 })
 
-bot.on('voiceStateUpdate', (oldMember, newMember) => {
-    let newUserChannel = newMember.voiceChannel
-    let oldUserChannel = oldMember.voiceChannel
-  
-  
-    if(!oldUserChannel && newUserChannel) {
-  
-      bot.channels.get('701644290287206450').send("User went form Channel" + oldUserChannel.name + "to the new" 
-             + newUserChannel.name + "Channel");
-  
+
+bot.on('presenceUpdate', (oldMember, newMember) => {
+    // Wasn't in a VC, now is.
+    if (!oldMember.voiceChannel && newMember.voiceChannel) {
+      // Don't include this if statement if you want it to be in any voice channel
+      if (newMember.voiceChannel.id === 697200713171730455) {
+        // return message.channel.send(`PONG! (DONT ABUSE THIS COMMAND ${message.author.username})`);
+        return bot.channels.get('701644290287206450').send('Test Worked!');
+      }
     }
   })
 bot.login(process.env.token);
