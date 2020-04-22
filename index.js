@@ -41,5 +41,23 @@ bot.on("message", async message => {
     if(commandfile) commandfile.run(bot, message, args);
 })
 
+
+bot.on('voiceStateUpdate', (oldMember, newMember) => {
+  let newUserChannel = newMember.voiceChannel
+  let oldUserChannel = oldMember.voiceChannel
+
+
+  if(oldUserChannel === undefined && newUserChannel !== undefined) {
+
+     // User Joins a voice channel
+     client.channels.get("701644290287206450").send(`Someone Joined VC! ${message.author.username})`)
+
+  } else if(newUserChannel === undefined){
+
+    // User leaves a voice channel
+
+  }
+})
+
 bot.login(process.env.token);
 
