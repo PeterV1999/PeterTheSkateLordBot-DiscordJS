@@ -42,23 +42,19 @@ bot.on("message", async message => {
 })
 
 
-bot.on('voiceStateUpdate', (oldMember, newMember, message) => {
+bot.on('voiceStateUpdate', async(oldMember, newMember) => {
     let newUserChannel = newMember.voiceChannel
     let oldUserChannel = oldMember.voiceChannel
 
     if(oldUserChannel === undefined && newUserChannel !== undefined) {
   
        // User Joins a voice channel
-       console.log("Joined");
-       bot.channels.get('701644290287206450').send('Test');
+       console.log("A User Joined Voicechat");
 
-       
-  
     } else if(newUserChannel === undefined){
   
       // User leaves a voice channel
-      console.log("Left");
-      bot.channels.get('701644290287206450').send('Test Again');
+      console.log("A User Left Voicechat");
   
     }
   })
