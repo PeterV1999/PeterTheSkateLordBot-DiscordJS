@@ -51,7 +51,7 @@ bot.on('voiceStateUpdate', async(oldMember, newMember) => {
        // User Joins a voice channel
        console.log("A User Joined Voicechat");
 
-    } else if(newUserChannel === undefined){
+    } else if(newUserChannel !== undefined){
   
       // User leaves a voice channel
       console.log("A User Left Voicechat");
