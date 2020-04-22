@@ -20,12 +20,7 @@ fs.readdir("./commands", (err, files) => {
     })
 })
 
-bot.on("ready", async () => {
 
-    console.log(`${bot.user.username} is online!`)
-    bot.user.setActivity('WITH BTICHES!', { type: 'PLAYING' })
-
-})
 
 
 bot.on("message", async message => {
@@ -42,12 +37,8 @@ bot.on("message", async message => {
 })
 
 
-bot.on('presenceUpdate', (oldMember, newMember) => {
-    // Wasn't in a VC, now is.
-    if (!oldMember.voiceChannel && newMember.voiceChannel) {
-        return bot.channels.get('701644290287206450').send('Test Worked!');
-      }
-    }
-  )
+
+
+  
 bot.login(process.env.token);
 
