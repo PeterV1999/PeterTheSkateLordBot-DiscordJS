@@ -41,15 +41,20 @@ bot.on("message", async message => {
     if(commandfile) commandfile.run(bot, message, args);
 })
 
-bot.on('voiceStateUpdate', (oldMember, newMember) => {
+
+bot.on('voiceStateUpdate', (oldMember, newMember, message) => {
     let newUserChannel = newMember.voiceChannel
     let oldUserChannel = oldMember.voiceChannel
+
+    if(oldUserChannel === undefined && newUserChannel !== undefined) {
   
+       // User Joins a voice channel
+       return message.channel.get('701644290287206450').send('Test');
   
-    if(!oldUserChannel && newUserChannel) {
+    } else if(newUserChannel === undefined){
   
-      bot.channels.get('701644290287206450').send("User went form Channel" + oldUserChannel.name + "to the new" 
-             + newUserChannel.name + "Channel");
+      // User leaves a voice channel
+      return message.channel.get('701644290287206450').send('Test Again');
   
     }
   })
