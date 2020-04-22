@@ -20,7 +20,12 @@ fs.readdir("./commands", (err, files) => {
     })
 })
 
+bot.on("ready", async () => {
 
+    console.log(`${bot.user.username} is online!`)
+    bot.user.setActivity('WITH BTICHES!', { type: 'PLAYING' })
+
+})
 
 
 bot.on("message", async message => {
@@ -36,9 +41,18 @@ bot.on("message", async message => {
     if(commandfile) commandfile.run(bot, message, args);
 })
 
-
-
-
+bot.on('voiceStateUpdate', (oldMember, newMember) => {
+    let newUserChannel = newMember.voiceChannel
+    let oldUserChannel = oldMember.voiceChannel
   
+  
+    if(!oldUserChannel && newUserChannel) {
+  
+      bot.channels.get('701644290287206450').send("User went form Channel" + oldUserChannel.name + "to the new" 
+             + newUserChannel.name + "Channel");
+  
+    }
+  })
+
 bot.login(process.env.token);
 
