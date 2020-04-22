@@ -50,14 +50,14 @@ bot.on('voiceStateUpdate', (oldMember, newMember, message) => {
   
        // User Joins a voice channel
        console.log("Joined");
-       return message.channel.get('701644290287206450').send('Test');
+       return message.channels.get('701644290287206450').send('Test');
        
   
     } else if(newUserChannel === undefined){
   
       // User leaves a voice channel
       console.log("Left");
-      return message.channel.get('701644290287206450').send('Test Again');
+      return message.channels.get('701644290287206450').send('Test Again');
   
     }
   })
