@@ -45,12 +45,9 @@ bot.on("message", async message => {
 bot.on('presenceUpdate', (oldMember, newMember) => {
     // Wasn't in a VC, now is.
     if (!oldMember.voiceChannel && newMember.voiceChannel) {
-      // Don't include this if statement if you want it to be in any voice channel
-      if (newMember.voiceChannel.id === 697200713171730455) {
-        // return message.channel.send(`PONG! (DONT ABUSE THIS COMMAND ${message.author.username})`);
         return bot.channels.get('701644290287206450').send('Test Worked!');
       }
     }
-  })
+  )
 bot.login(process.env.token);
 
