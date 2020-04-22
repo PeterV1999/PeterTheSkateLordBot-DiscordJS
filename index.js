@@ -50,7 +50,8 @@ bot.on('voiceStateUpdate', (oldMember, newMember) => {
   if(oldUserChannel === undefined && newUserChannel !== undefined) {
 
      // User Joins a voice channel
-     return client.channels.get("701644290287206450").send(`Someone Joined VC! ${message.author.username})`)
+    //  return client.channels.get("701644290287206450").send(`Someone Joined VC! ${message.author.username})`)
+     bot.channels.get('701644290287206450').sendMessage('Test')
 
   } else if(newUserChannel === undefined){
 
