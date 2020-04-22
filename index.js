@@ -43,22 +43,28 @@ bot.on("message", async message => {
 
 
 bot.on('voiceStateUpdate', (oldMember, newMember) => {
-  let newUserChannel = newMember.voiceChannel
-  let oldUserChannel = oldMember.voiceChannel
-
-
-  if(oldUserChannel === undefined && newUserChannel !== undefined) {
-
-     // User Joins a voice channel
-    //  return client.channels.get("701644290287206450").send(`Someone Joined VC! ${message.author.username})`)
-     bot.channels.get('701644290287206450').sendMessage('Test')
-
-  } else if(newUserChannel === undefined){
-
-    // User leaves a voice channel
-
-  }
-})
+    // Here I'm storing the IDs of their voice channels, if available
+    let oldChannel = oldMember.voiceChannel ? oldMember.voiceChannel.id : null;
+    let newChannel = newMember.voiceChannel ? newMember.voiceChannel.id : null;
+    if (oldChannel == newChannel) return; // If there has been no change, exit
+  
+    // Here I'm getting the bot's channel (bot.voiceChannel does not exist)
+    let botMember = oldMember.guild.member(bot.user),
+      botChannel = botMember ? botMember.voiceChannel.id : null;
+  
+    // Here I'm getting the channel, just replace VVV this VVV with the channel's ID
+    let textChannel = oldMember.guild.channels.get('CHANNEL_ID_HERE');
+    if (!textChannel) throw new Error("That channel does not exist.");
+  
+    // Here I don't need to check if they're the same, since it would've exit before
+    if (newChannel == botChannel) {
+      // console.log("A user joined.");
+      textChannel.send(`${newMember} has joined the voice channel.`);
+    } else if (oldChannel == botChannel) {
+      // console.log("A user left.");
+      textChannel.send(`${newMember} has left the voice channel.`);
+    }
+  });
 
 bot.login(process.env.token);
 
