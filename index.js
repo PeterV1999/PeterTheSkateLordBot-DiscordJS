@@ -23,7 +23,7 @@ fs.readdir("./commands", (err, files) => {
 bot.on("ready", async () => {
 
     console.log(`${bot.user.username} is online!`)
-    bot.user.setActivity('WITH BTICHES!', { type: 'PLAYING' })
+    bot.user.setActivity('WITH BITCHES!', { type: 'PLAYING' })
 
 })
 
